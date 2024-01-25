@@ -171,8 +171,9 @@ class Battle {
   }
 
   fight(turn) {
-    let attcker;
+    let attacker;
     let defender;
+    let damageMultiplier = 1;
     if (turn === 1) {
       attacker = this.trainer1.getPokemon(this.pokemon1);
       defender = this.trainer2.getPokemon(this.pokemon2);
@@ -180,6 +181,36 @@ class Battle {
       attacker = this.trainer2.getPokemon(this.pokemon2);
       defender = this.trainer1.getPokemon(this.pokemon1);
     }
+
+    if (defender.isEffectiveAgainst(attacker)) {
+      damageMultiplier = 0.75;
+      console.log(
+        `Defender is stronger than attacker, attack only deals ${
+          damageMultiplier * 100
+        }% damange`
+      );
+    } else if (defender.isWeakTo(attacker)) {
+      damageMultiplier = 1.25;
+      console.log(
+        `Defender is weaker than attacker, attack deals ${
+          damageMultiplier * 100
+        }% damange`
+      );
+    } else {
+      console.log(
+        `Defender is neither stronger nor weaker than attacker, attack deals ${
+          damageMultiplier * 100
+        }% damange`
+      );
+    }
+
+    defender.hitPoints -= attacker.attackDamage * damageMultiplier;
+
+    if (defender.hasFainted()) {
+      console.log("Attacker wins");
+      return true;
+    }
+    return false;
   }
 }
 
