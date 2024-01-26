@@ -22,21 +22,6 @@ const availablePokemon = [
   "Squirtle",
   "Bulbasaur",
 ];
-const firstQuestions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is your name?",
-    default: "Ash",
-  },
-  // {
-  //   type: "list",
-  //   name: "pokemon",
-  //   message: "Which pokemon do you choose?",
-  //   choices: ["Pikachu", "Magikarp"],
-  // },
-  // etc...
-];
 
 const pokemonSelection = [
   //... see examples to how to format questions
@@ -50,6 +35,16 @@ const pokemonSelection = [
     type: "input",
     name: "name",
     message: "What would you like to name this pokemon?",
+  },
+];
+
+const playAgainMenu = [
+  //... see examples to how to format questions
+  {
+    type: "list",
+    name: "choice",
+    message: "Would you like to play again?",
+    choices: ["Yes", "No"],
   },
 ];
 
@@ -169,4 +164,16 @@ async function playGame() {
   }
 }
 
-playGame();
+async function gameloop() {
+  let playAgain = true;
+  while (playAgain) {
+    await playGame();
+    await inquirer.prompt(playAgainMenu).then(function (playAgainChoice) {
+      if (playAgainChoice.choice === "No") {
+        playAgain = false;
+      }
+    });
+  }
+}
+
+gameloop();
