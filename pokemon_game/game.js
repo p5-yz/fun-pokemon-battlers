@@ -130,6 +130,25 @@ async function playGame() {
       continue;
     }
 
+    const playerPokemon = playerTrainer.getPokemon(playerPokemonName);
+    const moveSelection = playerPokemon.moves.map((move, index) => {
+      return `${move} - Uses left: ${playerPokemon.movesLeft[index]}`;
+    });
+    const pokemonMoveSelection = [
+      //... see examples to how to format questions
+      {
+        type: "list",
+        name: "move",
+        message: "Which move do you choose?",
+        choices: moveSelection,
+      },
+    ];
+
+    let playerMove;
+    await inquirer.prompt(pokemonMoveSelection).then(function (moveSelection) {
+      playerMove = moveSelection.move.split(" - ")[0];
+    });
+
     let enemyPokemonName;
     for (let i = 0; i < 6; i++) {
       const enemyPokemon = enemyTrainer.getPokemon(i);
@@ -146,12 +165,17 @@ async function playGame() {
       enemyPokemonName
     );
 
-    if (battle.fight(1)) {
+    console.log("Your turn");
+    if (battle.fight(1, playerMove)) {
       console.log("Your opponents pokemon has fainted!");
     }
 
-    if (!enemyTrainer.getPokemon(enemyPokemonName).hasFainted()) {
-      if (battle.fight(2)) {
+    if (
+      !enemyTrainer.getPokemon(enemyPokemonName).hasFainted() &&
+      !playerTrainer.getPokemon(playerPokemonName).hasFainted()
+    ) {
+      console.log("Opponent's turn");
+      if (battle.fight(2, "move 2")) {
         console.log("Your pokemon has fainted!");
       }
     }
