@@ -20,30 +20,30 @@ class Battle {
 
     if (defender.isEffectiveAgainst(attacker)) {
       damageMultiplier = 0.75;
-      console.log(
-        `Defender is stronger than attacker, attack only deals ${
-          damageMultiplier * 100
-        }% damange`
-      );
+      // console.log(
+      //   `Defender is stronger than attacker, attack only deals ${
+      //     damageMultiplier * 100
+      //   }% damange`
+      // );
     } else if (defender.isWeakTo(attacker)) {
       damageMultiplier = 1.25;
-      console.log(
-        `Defender is weaker than attacker, attack deals ${
-          damageMultiplier * 100
-        }% damange`
-      );
+      // console.log(
+      //   `Defender is weaker than attacker, attack deals ${
+      //     damageMultiplier * 100
+      //   }% damange`
+      // );
     } else {
-      console.log(
-        `Defender is neither stronger nor weaker than attacker, attack deals ${
-          damageMultiplier * 100
-        }% damange`
-      );
+      // console.log(
+      //   `Defender is neither stronger nor weaker than attacker, attack deals ${
+      //     damageMultiplier * 100
+      //   }% damange`
+      // );
     }
 
     defender.hitPoints -= attacker.attackDamage * damageMultiplier;
 
     if (defender.hasFainted()) {
-      console.log("Attacker wins");
+      //console.log("Attacker wins");
       return true;
     }
     return false;

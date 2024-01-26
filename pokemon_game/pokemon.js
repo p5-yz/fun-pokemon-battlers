@@ -81,25 +81,49 @@ class Normal extends Pokemon {
 }
 
 class Charmander extends Fire {
-  constructor(name, hitPoints, attackDamage, move = "ember") {
+  constructor(name, hitPoints = 44, attackDamage = 17, move = "Flamethrower") {
     super(name, hitPoints, attackDamage, move);
   }
 }
 
 class Squirtle extends Water {
-  constructor(name, hitPoints, attackDamage, move = "water gun") {
+  constructor(name, hitPoints = 44, attackDamage = 16, move = "Surf") {
     super(name, hitPoints, attackDamage, move);
   }
 }
 
 class Bulbasaur extends Grass {
-  constructor(name, hitPoints, attackDamage, move = "vine whip") {
+  constructor(name, hitPoints = 45, attackDamage = 16, move = "Razor leaf") {
     super(name, hitPoints, attackDamage, move);
   }
 }
 
 class Rattata extends Normal {
-  constructor(name, hitPoints, attackDamage, move) {
+  constructor(name, hitPoints = 30, attackDamage = 56, move = "Guts") {
+    super(name, hitPoints, attackDamage, move);
+  }
+}
+
+class Eevee extends Normal {
+  constructor(name, hitPoints = 55, attackDamage = 18, move = "Headbutt") {
+    super(name, hitPoints, attackDamage, move);
+  }
+}
+
+class Flareon extends Fire {
+  constructor(name, hitPoints = 65, attackDamage = 20, move = "Fire blast") {
+    super(name, hitPoints, attackDamage, move);
+  }
+}
+
+class Vaporeon extends Water {
+  constructor(name, hitPoints = 70, attackDamage = 19, move = "Hydro pump") {
+    super(name, hitPoints, attackDamage, move);
+  }
+}
+
+class Leafeon extends Grass {
+  constructor(name, hitPoints = 65, attackDamage = 17, move = "Giga drain") {
     super(name, hitPoints, attackDamage, move);
   }
 }
@@ -114,4 +138,8 @@ module.exports = {
   Squirtle,
   Bulbasaur,
   Rattata,
+  Eevee,
+  Flareon,
+  Vaporeon,
+  Leafeon,
 };

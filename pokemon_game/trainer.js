@@ -26,6 +26,15 @@ class Trainer {
       }
     }
   }
+
+  hasAllFainted() {
+    for (const pokeball of this.belt) {
+      if (!pokeball.pokemon.hasFainted()) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 module.exports = { Trainer };

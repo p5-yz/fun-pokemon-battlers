@@ -2,16 +2,16 @@ class Pokeball {
   throw(pokemon) {
     if (pokemon === undefined) {
       if (this.pokemon === undefined) {
-        console.log("No pokemon in ball");
+        //console.log("No pokemon in ball");
       } else {
-        console.log(`GO ${this.pokemon.name}`);
+        //console.log(`GO ${this.pokemon.name}`);
       }
       return this.pokemon;
     }
 
     if (this.pokemon === undefined) {
       this.pokemon = pokemon;
-      console.log(`you caught ${pokemon.name}`);
+      //console.log(`you caught ${pokemon.name}`);
     }
   }
 
@@ -26,6 +26,10 @@ class Pokeball {
       return this.pokemon.name;
     }
   }
+
+  // get pokemon() {
+  //   return this.pokemon;
+  // }
 }
 
 module.exports = { Pokeball };
